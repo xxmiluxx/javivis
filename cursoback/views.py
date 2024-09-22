@@ -1,64 +1,62 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import login as login_django
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
+import json
 
 
+def index(request):
+    return render(request,"index.html")
 
+def content(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        titulo = data.get('titulo')  
+        imagen = data.get('imagen')  
+        descripcion = data.get('descripcion')
+        temas_investigacion = data.get('temasInvestigacion')
+        logros = data.get('logros')
+        trabajo_futuro = data.get('trabajoFuturo')
 
-def index (request):
-    #return HttpResponse('texto')
-    return render(request,'index.html',{
-        
-        'titulo':'pagina1',
-        
-        'lista1':[
-            {'diccionario':'Libro python', 'Precio':500,'unidadesdisponibles':True},
-            {'diccionario':'Libro mongo', 'Precio':200,'unidadesdisponibles':False},
-            {'diccionario':'Libro c', 'Precio':10,'unidadesdisponibles':True},
-        ]
-    })
-def error(request):
-    return render(request,'errores/error.html',{
-        
-    })
+        request.session.clear()  
+
+        request.session['titulo'] = titulo
+        request.session['imagenCargada'] = imagen
+        request.session['descripcion'] = descripcion
+        request.session['temasInvestigacion'] = temas_investigacion
+        request.session['logros'] = logros
+        request.session['trabajoFuturo'] = trabajo_futuro
+
+        return redirect('content')
     
+    titulo = request.session.get('titulo', '')
+    imagen = request.session.get('imagenCargada', '')
+    descripcion = request.session.get('descripcion', '')
+    temas_investigacion = request.session.get('temasInvestigacion', '')
+    logros = request.session.get('logros', '')
+    trabajo_futuro = request.session.get('trabajoFuturo', '')
+
+    return render(request, "content.html", {
+        'titulo': titulo,
+        'imagenCargada': imagen,
+        'descripcion': descripcion,
+        'temasInvestigacion': temas_investigacion,
+        'logros': logros,
+        'trabajoFuturo': trabajo_futuro
+    })
+
+
+
 def login(request):
-    print(request)
-    if request.method=='POST':
-            username=request.POST.get('username')
-            password=request.POST.get('password')
-            user=authenticate(username=username,password=password)
-            if user:
-                login_django(request,user)
-                return redirect('index')
-            else:
-            
-                return redirect('error')
-    
-    return render(request,'misUsuarios/login.html',{
-        
-  })
-def login2(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+    if request.method =='POST':
+        username= request.POST.get('username')
+        password= request.POST.get('password')
+        user= authenticate(username=username,password=password)
         if user:
-            login_django(request, user)
-            return redirect('espacio')
+            login_django(request,user)
+            print("usuario valido")
+            return redirect('index')
         else:
-            return redirect('error')
-
-    return render(request, 'login2.html')
-def espacio(request):
-    
-    return render(request,'espacio.html',{
-        
-    })
-    
-
-
-
-
+            print("usuario no valido")
+        print(username,password)
+    return render(request,'Especialidades/login.html',{})

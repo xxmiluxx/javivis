@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ titulo }}</h1>
+            <a href="{% url 'index' %}" class="return-button">Regresar</a>
+        </header>
+        <div class="content">
+            <img src="{% static 'images/' %}{{imagenCargada}}"  class="pilot-image">
+            <div class="links">
+                <h1 class="link">Descripción</h1>
+                <p>
+                    {{ descripcion }}
+                </p>
+                <h1 class="links">Temas de investigación en México</h1>
+                <p>
+                    {{ temasInvestigacion }}
+                </p>
+                <h1 class="links">Logros</h1>
+                <p>
+                    {{ logros }}
+                </p>
+                <h1 class="links">Trabajo futuro</h1>
+                <p>
+                    {{ trabajoFuturo }}
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

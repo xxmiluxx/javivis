@@ -1,0 +1,57 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+.containercss {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 50px;
+}
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.content {
+    display: flex;
+    flex: 1;
+}
+.sidebar {
+    width: 200px;
+    background-image: url("../images/APalen.jpg");
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.menu-item {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+.main-content {
+    flex: 1;
+    padding: 20px;
+    border: 2px double rgb(255, 255, 255);
+    background-color: black;
+}
+.carousel-item img {
+    max-height: 400px;
+    object-fit: contain;
+    width: 100%;
+    background-color: black;
+
+}
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}

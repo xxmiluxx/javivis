@@ -54,7 +54,7 @@ ROOT_URLCONF = 'cursoback.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['Practicatemplates'],
+        'DIRS': ["templates"],  # Verifica que el directorio de plantillas esté aquí
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +66,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'cursoback.wsgi.application'
 

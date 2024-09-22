@@ -1,0 +1,42 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.return-button {
+    color: #fff;
+    text-decoration: none;
+}
+.content {
+    padding: 20px;
+}
+.pilot-image {
+    max-height: 400px;
+    object-fit: contain;
+    width: 100%;
+    background-color: black;
+}
+.links {
+    margin-top: 20px;
+}
+.links h1 {
+    display: block;
+    color: #0000FF;
+    text-decoration: none;
+    margin-bottom: 10px;
+}

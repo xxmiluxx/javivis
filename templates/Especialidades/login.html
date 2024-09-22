@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container"></div>
+        <div class="form-container">
+            <div class="language-selector">
+                <button>Eng</button>
+                <button class="active">Esp</button>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <label for="usuario">Usuario</label>
+                <input type="text" id="username" name="username">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Iniciar sesion</button>
+            </form>
+            <div class="register-link">
+                ¿Eres nuevo? <a href="#">Regístrate aquí</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

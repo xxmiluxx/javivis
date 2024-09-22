@@ -1,8 +1,66 @@
-#h1{
-    color:red;
-    
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
-body{
-    background-image:url("");
-    align-items:center;
+.container {
+    display: flex;
+    height: 100%;
+}
+.image-container {
+    flex-grow: 1;
+    background-image: url('../images/Galaxia.png');
+    background-size: cover;
+    background-position: center;
+}
+.form-container {
+    width: 20%;
+    background-color: #1a2a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.language-selector {
+    align-self: flex-end;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.language-selector button {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+}
+.language-selector button.active {
+    color: white;
+}
+form {
+    width: 80%;
+    max-width: 300px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #2a3a4a;
+    border: 1px solid #3a4a5a;
+    color: white;
+}
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.register-link {
+    margin-top: 20px;
+    color: #f1c40f;
+}
+.register-link a {
+    color: #f1c40f;
 }
