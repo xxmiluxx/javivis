@@ -14,22 +14,23 @@
         <div class="image-container"></div>
         <div class="form-container">
             <div class="language-selector">
-                <button>Eng</button>
-                <button class="active">Esp</button>
+                <button id="btn-eng" onclick="cambiarIdioma('en')">Eng</button>
+                <button id="btn-esp" onclick="cambiarIdioma('es')" class="active">Esp</button>
             </div>
             <form method="post">
                 {% csrf_token %}
-                <label for="usuario">Usuario</label>
+                <label id="label-usuario" for="usuario">{% if idioma == 'en' %}Username{% else %}Usuario{% endif%}</label>
                 <input type="text" id="username" name="username">
-                <label for="contrasena">Contraseña</label>
+                <label id="label-contrasena" for="contrasena">{% if idioma == 'en' %}Password{% else %}Contraseña{%endif %}</label>
                 <input type="password" id="password" name="password">
-                <button type="submit">Iniciar sesion</button>
+                <button type="submit" id="submit-btn">{% if idioma == 'en' %}Login{% else %}Iniciar sesión{% endif%}</button>
             </form>
             <div class="register-link">
-                ¿Eres nuevo? <a href="#">Regístrate aquí</a>
+                <span id="register-text">{% if idioma == 'en' %}New here?{% else %}¿Eres nuevo?{% endif %}</span>
+                <a id="register-link" href="#">{% if idioma == 'en' %}Sign up here{% else %}Regístrate aquí{% endif%}</a>
             </div>
         </div>
     </div>
 </body>
-
+<script src="{% static 'js/login.js' %}"></script>
 </html>

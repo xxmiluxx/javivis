@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth import login as login_django
 from django.contrib.auth import authenticate
@@ -45,8 +46,6 @@ def content(request):
         'trabajoFuturo': trabajo_futuro
     })
 
-
-
 def login(request):
     if request.method =='POST':
         username= request.POST.get('username')
@@ -60,3 +59,14 @@ def login(request):
             print("usuario no valido")
         print(username,password)
     return render(request,'Especialidades/login.html',{})
+
+def cambiar_idioma(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        idioma = data.get('idioma')
+        
+        if idioma:
+            request.session['idioma'] = idioma  # Guardar el idioma en la sesión
+            return JsonResponse({'message': 'Idioma actualizado', 'idioma': idioma})
+        
+    return JsonResponse({'error': 'Petición inválida'}, status=400)
