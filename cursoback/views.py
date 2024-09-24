@@ -7,7 +7,8 @@ import json
 
 
 def index(request):
-    return render(request,"index.html")
+    idioma = request.session.get('idioma', 'es')  # Valor predeterminado es español
+    return render(request, 'index.html', {'idioma': idioma})
 
 def content(request):
     if request.method == "POST":

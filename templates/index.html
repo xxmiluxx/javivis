@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ idioma }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencia Espacial Mexicana</title>
+    <title>{% if idioma == 'en' %}Mexican Space Agency{% else %}Agencia Espacial Mexicana{% endif %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
@@ -13,13 +13,19 @@
 <body>
     <div class="containercss">
         <header>
-            <h1>Agencia Espacial Mexicana</h1>
+            <h1>{% if idioma == 'en' %}Mexican Space Agency{% else %}Agencia Espacial Mexicana{% endif %}</h1>
         </header>
         <div class="content">
             <div class="sidebar">
-                <button class="menu-item" onclick="crearCarrusel('optica')">Óptica</button>
-                <button class="menu-item" onclick="crearCarrusel('aeronautica')">Aeronáutica</button>
-                <button class="menu-item" onclick="crearCarrusel('espacio')">Espacio</button>
+                <button class="menu-item" onclick="crearCarrusel('optica')">
+                    {% if idioma == 'en' %}Optics{% else %}Óptica{% endif %}
+                </button>
+                <button class="menu-item" onclick="crearCarrusel('aeronautica')">
+                    {% if idioma == 'en' %}Aeronautics{% else %}Aeronáutica{% endif %}
+                </button>
+                <button class="menu-item" onclick="crearCarrusel('espacio')">
+                    {% if idioma == 'en' %}Space{% else %}Espacio{% endif %}
+                </button>
             </div>
             <div class="main-content" id="main-content">
                 <div id="miCarrusel" class="carousel slide" data-bs-ride="carousel">
@@ -30,41 +36,49 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../static/images/optica.jpeg" class="d-block w-100" alt="Optica Espacial">
+                            <img src="../static/images/optica.jpeg" class="d-block w-100" alt="{% if idioma == 'en' %}Space Optics{% else %}Óptica Espacial{% endif %}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p>
-                                La óptica es una rama de la física que se dedica al estudio de la luz visible:
-                                sus propiedades y su comportamiento. También analiza sus eventuales aplicaciones en la
-                                vida del ser humano, como es la construcción de instrumentos para detectarla o valerse de ella
+                                    {% if idioma == 'en' %}
+                                    Optics is a branch of physics that studies visible light: its properties and behavior. It also analyzes its potential applications in human life, such as the construction of instruments to detect it or make use of it.
+                                    {% else %}
+                                    La óptica es una rama de la física que se dedica al estudio de la luz visible: sus propiedades y su comportamiento. También analiza sus eventuales aplicaciones en la vida del ser humano, como es la construcción de instrumentos para detectarla o valerse de ella.
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="../static/images/aurona.jpeg" class="d-block w-100" alt="Optica Avanzada">
+                            <img src="../static/images/aurona.jpeg" class="d-block w-100" alt="{% if idioma == 'en' %}Advanced Optics{% else %}Óptica Avanzada{% endif %}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p>
-                                La ingeniería Aeronáutica se encarga del diseño, mantenimiento y puesta a punto de todo tipo
-                                de aeronaves: aviones comerciales, de pasajeros, helicópteros, hidroaviones, etc.
+                                    {% if idioma == 'en' %}
+                                    Aeronautical engineering is responsible for the design, maintenance, and fine-tuning of all types of aircraft: commercial airplanes, passenger planes, helicopters, seaplanes, etc.
+                                    {% else %}
+                                    La ingeniería Aeronáutica se encarga del diseño, mantenimiento y puesta a punto de todo tipo de aeronaves: aviones comerciales, de pasajeros, helicópteros, hidroaviones, etc.
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="../static/images/espacio.jpeg" class="d-block w-100" alt="Tecnologias Opticas">
+                            <img src="../static/images/espacio.jpeg" class="d-block w-100" alt="{% if idioma == 'en' %}Space Technologies{% else %}Tecnologías Ópticas{% endif %}">
                             <div class="carousel-caption d-none d-md-block">
                                 <p>
-                                La exploración espacial designa los esfuerzos del ser humano en estudiar el espacio y sus astros desde el
-                                punto de vista científico y de su explotación económica.
+                                    {% if idioma == 'en' %}
+                                    Space exploration refers to the human efforts to study space and its stars from a scientific perspective and its economic exploitation.
+                                    {% else %}
+                                    La exploración espacial designa los esfuerzos del ser humano en estudiar el espacio y sus astros desde el punto de vista científico y de su explotación económica.
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#miCarrusel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
+                        <span class="visually-hidden">{% if idioma == 'en' %}Previous{% else %}Anterior{% endif %}</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#miCarrusel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
+                        <span class="visually-hidden">{% if idioma == 'en' %}Next{% else %}Siguiente{% endif %}</span>
                     </button>
                 </div>
             </div>
