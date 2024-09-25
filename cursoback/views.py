@@ -20,7 +20,6 @@ def content(request):
         logros = data.get('logros')
         trabajo_futuro = data.get('trabajoFuturo')
 
-        request.session.clear()  
 
         request.session['titulo'] = titulo
         request.session['imagenCargada'] = imagen
@@ -36,6 +35,7 @@ def content(request):
     descripcion = request.session.get('descripcion', '')
     temas_investigacion = request.session.get('temasInvestigacion', '')
     logros = request.session.get('logros', '')
+    idioma = request.session.get('idioma', '')
     trabajo_futuro = request.session.get('trabajoFuturo', '')
 
     return render(request, "content.html", {
@@ -44,7 +44,8 @@ def content(request):
         'descripcion': descripcion,
         'temasInvestigacion': temas_investigacion,
         'logros': logros,
-        'trabajoFuturo': trabajo_futuro
+        'trabajoFuturo': trabajo_futuro,
+        'idioma': idioma
     })
 
 def login(request):
@@ -65,9 +66,7 @@ def cambiar_idioma(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         idioma = data.get('idioma')
-        
         if idioma:
             request.session['idioma'] = idioma  # Guardar el idioma en la sesión
             return JsonResponse({'message': 'Idioma actualizado', 'idioma': idioma})
-        
     return JsonResponse({'error': 'Petición inválida'}, status=400)

@@ -13,10 +13,10 @@
     <div class="container">
         <header>
             <h1>{{ titulo }}</h1>
-            <a href="{% url 'index' %}" class="return-button">Regresar</a>
+            <a href="{% url 'index' %}" class="return-button">{% if idioma == 'en' %}Back{% else %}Regresar{% endif%}</a>
         </header>
         <div class="content">
-            <img src="{% static 'images/' %}{{imagenCargada}}"  class="pilot-image">
+            <img src="{% static 'images/' %}{{imagenCargada}}" class="pilot-image">
             <div class="links">
                 <h1 class="link">Descripción</h1>
                 <p>
@@ -37,6 +37,6 @@
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>
